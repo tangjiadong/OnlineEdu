@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="src/axios.min.js"></script>
+    <script src="src/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table border="1">
+            <tr>
+                <td>姓名</td>
+                <td>年龄</td>
+            </tr>
+            <tr v-for="item in memberList">
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            memberList: []
+        },
+        created(){
+            this.getList()
+        },
+        methods:{
+            getList(id){
+                axios.get('https://www.easy-mock.com/mock/5f6c6f12b766f82502c8a754/mock-test/userLsit')
+                .then(response=>{   //回调成功
+                    console.log(response)
+                    this.memberList = response.data.data
+                })
+                .catch(error=>{ //回调失败
+                    console.log(error)
+                })
+
+            }
+        }
+    })
+</script>
+</html>
