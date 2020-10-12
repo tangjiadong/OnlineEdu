@@ -16,7 +16,6 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -29,7 +28,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/teacher")
-@Api(description = "讲师管理")
+@Api(tags = "讲师管理")
+@CrossOrigin
 public class EduTeacherController {
 
     @Autowired
@@ -39,12 +39,10 @@ public class EduTeacherController {
     @ApiOperation(value = "所有讲师列表")
     @GetMapping("list")
     public Result list(){
-
-        //int i = 1/0; //ArithmeticException
-
         try {
-
-            List<EduTeacher> list = teacherService.list(null);
+            QueryWrapper wrapper = new QueryWrapper();
+            wrapper.orderByDesc("gmt_create");
+            List<EduTeacher> list = teacherService.list(wrapper);
             return Result.ok().data("items",list);
         } catch (Exception e) {
             e.printStackTrace();

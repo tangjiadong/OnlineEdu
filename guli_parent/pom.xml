@@ -5,6 +5,8 @@
     <modules>
         <module>guli_teacher</module>
         <module>guli_common</module>
+        <module>untitled</module>
+        <module>guli_oss</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>

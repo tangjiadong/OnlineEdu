@@ -1,6 +1,7 @@
 package com.guli.teacher.controller;
 
 import com.guli.common.result.Result;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("user")
+@Api(tags = "登录")
 @CrossOrigin
 public class UserController {
 

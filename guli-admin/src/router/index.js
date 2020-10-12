@@ -55,10 +55,37 @@ export const constantRouterMap = [
         name: '讲师新增',
         component: () => import('@/views/teacher/add'),
         meta: { title: '讲师新增', icon: 'tree' }
+      },
+      {
+        path: 'edit/:id',
+        name: '讲师修改',
+        component: () => import('@/views/teacher/add'),
+        meta: { title: '讲师修改', icon: 'tree' },
+        hidden: true
       }
     ]
   },
-
+  {
+    path: '/subject',
+    component: Layout,
+    redirect:'/subject/list',
+    name:'课程分类管理',
+    meta:{title:'课程分类管理',icon:'example'},
+    children:[
+      {
+        path:'list',
+        name:'课程分类列表',
+        component:()=>import('@/views/subject/list'),
+        meta:{title:'课程分类列表',icon:'tree'}
+      },
+      {
+        path:'import',
+        name:'课程分类导入',
+        component:()=>import('@/views/subject/import'),
+        meta:{title:'课程分类导入',icon:'table'}
+      }
+    ]
+  },
   {
     path: '/example',
     component: Layout,
